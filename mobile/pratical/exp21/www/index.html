@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <button id ="btn1" onClick="function1()">Click me</button>
+            <h2 id="txt1"> Default text !!!</h2>
+
+            <script type="text/javascript">
+                function function1(){
+                    document.getElementById("txt1").innerHTML = "changed text alter button click";
+                }
+            </script>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

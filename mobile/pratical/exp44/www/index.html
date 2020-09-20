@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Accerlermoter</h1>
+            <div id="deviceready" class="blink">
+                <button id="getAccerlermoter" onclick="getAccerlermoter()">Get Accerlermoter</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+        function getAccerlermoter(){
+                navigator.accerlermoter.getcurrentaccerlermoter(accSuccess, accFailure);
+                function accSuccess(accerlermoter){
+                    alert("Accerlermoter X: " +accerlermoter.x +"\n" + "Accerlermoter Y: " +accerlermoter.y +"\n" + "Accerlermoter Z: " +accerlermoter.z +"\n" + "Timestamp: " +accerlermoter.timestamp 
+                        );
+                }
+                function accFailure(message){
+                    alert("Accerlermoter Failure" +message);
+                }            
+        }
+        </script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

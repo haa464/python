@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>contact</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>contact</h1>
+            <input type="text" id="name" />
+            <button id="createContact" onclick="createContact()">ADD contact</button>
+            <button id="displayCotacts" onclick="displayContacts()">Display contacts</button>
+            </div>
+            <script type="text/javascript">
+                function createContact() {
+                    var name = document.getElementByid('name').value;
+                    var myContact = navigator.contact.create({"displayName":name});
+                    myContact.save(contactsSuccess,contactsError);
+
+                    function contactsSuccess(){
+                        alert("contact saved!!");
+                    }
+
+                    function contactsError(message){
+                        alert("failed because : "+message)
+                    }
+                }
+                function displayContacts(){
+                    var options = new ContactFindOptions();
+                    options.filter = "";
+                    options.multiple =true;
+                    fields = ["displayName"];
+                    navigator.contacts.find(fields,contactsFindSuccess,contactsFindError,options);
+                    
+                    function contactsFindSucess(contacts){
+                        for(var i=0;i<contacts.length;i++){
+                            alert("diaplay name"+contacts[i].displayName);
+                        }
+                    }
+                     function contactsFindError(message){
+                        alert("faliled because"+ message)
+                     }
+                }
+            </script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

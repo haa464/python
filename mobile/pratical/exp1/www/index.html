@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <h2>Hello world</h2>
+            <button id="btm">Click Me</button> 
+            <script type="text/javascript">
+                btm.addEventListener("mouseover",function(){alert("mouseover event detected");});
+                btm.addEventListener("click",function(){alert("click event detected");});
+                btm.addEventListener("mouseout",function(){alert("mouseout event detected");});
+            </script>          
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

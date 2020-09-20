@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>device plugin</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>device plugin</h1>
+            <button id="cordovaDevice" onclick="cordovaDevice()">Cordova Device</button>
+        </div>
+        <script type="text/javascript">
+            function cordovaDevice(){
+                alert("Cordova version:"+device.cordova+"\n" +
+                    "Device model:"+ device.model+"\n" +
+                    "Device uuid:"+device.uuid +"\n"+
+                    "Device platfrom:"+device.platfrom +"\n" +
+                    "Device version:"+device.version);
+            }
+        </script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
