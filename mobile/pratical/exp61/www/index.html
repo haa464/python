@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>file APP</title>
+    </head>
+    <body>
+          <h1>File App</h1>
+          <button id="createFile" onclick="createFile()">Create file</button>
+          <button id="deleteFile" onclick="deleteFile()">Delate file</button>
+          <button id="writeFile" onclick="writeFile()">write File</button>
+          <textarea id="textarea"></textarea>
+          <button id="readFile" onclick="readFile()">Read File</button>
+
+          <script type="text/javascript">
+            function readFile(){
+                var type = window.TEMPORARY;
+                var size = 5*1024*1024;
+                window.requestFileSystem(type,size,successCallback,errorCallbabk);
+
+                function successCallback(fs){
+                    fs.root.getFile("log.txt",{},function(fileEntry){
+                        fileEntry.file(function(file){
+                            var reader = new FileReader();
+                                reader.onloaded = function(e){
+                                    var textArea = document.getElementById("textarea");
+                                    textArea.value = this.result;
+                                };
+                                reader.readAsText(file);
+                        },errorCallback);
+                    },errorCallback);
+                }
+                function errorCallback(error){
+                    alert("error " +error.code)
+                }
+            }
+
+
+
+            function writeFile(){
+                var type = window.TEMPORARY;
+                var size = 5*1024*1024;
+                window.requestFileSystem(type,size,successCallback,errorCallback)
+
+                function sucessfulCallback(fs){
+                    fs.root.getFile("log.txt",(create : false), function(fileEntry){
+                        fileEntry.createWriter(function(fileWiter){
+                            fileWiter.onWriteened = function(e){
+                                alert("write complete");
+                            };
+                            fileWiter.onerror = function(e){
+                                alert("write failed : "+e.tostring());
+                            };
+                            var blob = new Blob(["hello world !!!"],{type:"text/plan"});
+                            fileWiter.write(blob);
+                        },errorCallback);
+                    },errorCallback);
+                }
+                function errorCallback(){
+                    alert("Error : "+ error.code);
+                }
+            }
+
+            function deleteFile(){
+                var type = window.TEMPORARY;
+                var size = 5*1024*1024;
+                window.requestFileSystem(type,size,successCallback,errorCallback)
+
+                function successCallback(fs){
+                    fs.root.getFile("log.txt",{create:false},function(fileEntry){
+                        fileEntry.remove(function(){alert("file removed");},errorCallback);
+                    },errorCallback);
+                }
+
+                function errorCallback(error){
+                    alert("Error : " + error.code);
+                }
+            }
+
+
+
+              function createFile(){
+                var type = window.TEMPORARY;
+                var size = 5*1024*1024;
+                window.requestFileSystem(type,size,successCallback,errorCallback)
+
+                function successCallback(fs){
+                    fs.root.getFile("log.txt", (create:true,exlusive:true),function(fileEntry){
+                        alert("file creation successful");
+                    },errorCallback);
+                }
+
+                function errorCallback(error){
+                    alert("Error : " +error.code);
+                }
+            }
+          </script>            
+        
+        <script src="cordova.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

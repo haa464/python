@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Orientation App</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Orientation App</h1>
+            <button id="getorientation" onclick="getorientation()">Get
+            Orientation</button><br></br>
+
+            <select name="getorientationType" id="orientationType">
+                <option value="poratrait-primary">Poratrait Primary</option>
+                <option value="poratrait-secondary">poratrait secondary</option>
+                <option value="landscape-primary">landscape primary</option>
+                <option value="landscape-secondary">landscape secondary</option>
+            </select>
+
+            <button id="lockOrientation" onclick="lockOrientation()">lock Orientation</button>
+            <button id="unlockOrientation" onclick="unlockOrientation()">unlock Orientation</button>
+        </div>
+        <script type="text/javascript">
+            function getorientation() {
+                alert("orientation: " + screen.orientation.type);
+            }
+
+            function lockOrientation() {
+                var = orientationType = document.getElementById("orientationType").value;
+                screen.orientation.lock(orientationType);
+            }
+            function unlockOrientation() {
+                screen.orientation.unlock();
+            }
+        </script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

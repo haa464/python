@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>dialog box</h1>
+            <button id="dialogAlert" onclick="dialogAlert()">Alert button</button><br><br>
+            <button id="dialogPrompt" onclick="dialogPrompt()">dialog Prompt</button><br><br>
+            <button id="dialogBeep" onclick="dialogBeep()">dialog Beep</button>
+        </div>
+        <script type="text/javascript">
+            function dialogBeep(){
+                var time = 4
+                navigator.notification.alert(time);
+            }
+            function dialogAlert(){
+                var message = "Hello all, i am dialog box";
+                var title = "Alert box";
+                var buttonName = "Alert button"
+                navigator.notification.alert(message,alertCallback, title, buttonName);
+                function alertCallback(){
+                    alert("Alert box is dismissed");
+                }
+            }
+            function dialogConfrim(){
+                var message = "Hello all, i am dialog box";
+                var title = "Confrim box";
+                var buttonName = "yes, No"
+                navigator.notification.alert(message,alertCallback, title, buttonName);
+                function alertCallback(){
+                    alert("you have clickeed " + buttonIndex + " button!!");
+                }
+            }
+            function dialogPrompt(){
+                var message = "Hello all, i am dialog Prompt";
+                var title = "Prompt box";
+                var buttonName = "yes, No"
+                var defaultText = "Default Text"
+                navigator.notification.alert(message,alertCallback, title, buttonName, defaultText);
+                function alertCallback(){
+                    alert("you have clickeed " + object1.buttonIndex + " button!!" + "you have entered" + object1.input1;
+                }
+            }
+        </script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
